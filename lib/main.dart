@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
-void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-  runApp(MaterialApp(
-    home: Night(),
-  ));
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Home(),
+    );
+  }
 }
 
-class Morning extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     double widthOfScreen = MediaQuery.of(context).size.width;
@@ -63,7 +71,10 @@ class Morning extends StatelessWidget {
                   ),
                   SizedBox(
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => Screen2()));
+                      },
                       icon: Image.asset('assets/images/moon_morning.png'),
                     ),
                     width: widthOfScreen / 2,
@@ -79,7 +90,12 @@ class Morning extends StatelessWidget {
   }
 }
 
-class Night extends StatelessWidget {
+class Screen2 extends StatefulWidget {
+  @override
+  _Screen2State createState() => _Screen2State();
+}
+
+class _Screen2State extends State<Screen2> {
   @override
   Widget build(BuildContext context) {
     double widthOfScreen = MediaQuery.of(context).size.width;
@@ -126,7 +142,10 @@ class Night extends StatelessWidget {
                 children: [
                   SizedBox(
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => Home()));
+                      },
                       icon: Image.asset('assets/images/sun_night.png'),
                     ),
                     width: widthOfScreen / 2,
